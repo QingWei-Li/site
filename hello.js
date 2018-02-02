@@ -34,21 +34,20 @@ botui.message
   .then(() =>
     botui.message.bot({
       loading: true,
-      delay: 1200,
+      delay: 1500,
       content: '🤩 [github.com/qingwei-li](https://github.com/qingwei-li)'
     })
   )
   .then(() =>
     botui.message.bot({
-      loading: true,
-      delay: 2000,
+      delay: 1500,
       content: '🤨'
     })
   )
   .then(() =>
     botui.message.bot({
       loading: true,
-      delay: 500,
+      delay: 1000,
       content: '📧❓ 💰❓'
     })
   )
@@ -69,19 +68,53 @@ botui.message
     })
   )
   .then(val =>
-    botui.message.bot({
-      loading: true,
-      delay: 1000,
-      content:
-        val.value === 'email'
-          ? '😇📩  [cinwell.li@gmail.com](mailto:cinwell.li@gmail.com?subject=Hi Qingwei Li)'
-          : '🤑😘  [paypal.me/cinwell](paypal.me/cinwell)'
-    })
+    botui.message
+      .bot({
+        loading: true,
+        delay: 1000,
+        content:
+          val.value === 'email'
+            ? '😇📩  [cinwell.li@gmail.com](mailto:cinwell.li@gmail.com?subject=Hi Qingwei Li)'
+            : '🤑😘  [paypal.me/cinwell](paypal.me/cinwell)'
+      })
+      .then(() => {
+        if (val.value === 'donate') {
+          if (/micromessenger/i.test(navigator.userAgent)) {
+            return botui.message
+              .bot({
+                loading: true,
+                delay: 1000,
+                content: '🤔'
+              })
+              .then(() =>
+                botui.message.bot({
+                  loading: true,
+                  delay: 2000,
+                  content: '![](/wechat.png)'
+                })
+              );
+          } else if (/zh/i.test(navigator.language)) {
+            return botui.message
+              .bot({
+                loading: true,
+                delay: 1000,
+                content: '😐'
+              })
+              .then(() =>
+                botui.message.bot({
+                  loading: true,
+                  delay: 2000,
+                  content: '![](/pay.png)'
+                })
+              );
+          }
+        }
+        return;
+      })
   )
   .then(() =>
     botui.message.bot({
-      loading: true,
-      delay: 1000,
+      delay: 3000,
       content: '🤟'
     })
   );
