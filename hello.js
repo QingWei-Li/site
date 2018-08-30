@@ -75,7 +75,7 @@ botui.message
         content:
           val.value === 'email'
             ? '😇📩  [cinwell.li@gmail.com](mailto:cinwell.li@gmail.com?subject=Hi Qingwei Li)'
-            : '🤑😘  [paypal.me/cinwell](paypal.me/cinwell)'
+            : '🤑😘  [paypal.me/cinwell](https://paypal.me/cinwell)'
       })
       .then(() => {
         if (val.value === 'donate') {
