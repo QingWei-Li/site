@@ -104,7 +104,7 @@ botui.message
                 botui.message.bot({
                   loading: true,
                   delay: 2000,
-                  content: '![](/pay.png)'
+                  content: '[![](/pay.png)](/pay.png)'
                 })
               );
           }
