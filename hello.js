@@ -93,7 +93,7 @@ botui.message
                   content: '![](/wechat.png)'
                 })
               );
-          } else if (/zh/i.test(navigator.language)) {
+          } else {
             return botui.message
               .bot({
                 loading: true,
